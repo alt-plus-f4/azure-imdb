@@ -1,6 +1,8 @@
 const Joi = require('joi');
 const sql = require('mssql');
 
+console.log('FindMovie function is starting...');
+
 module.exports = async function (context, req) {
     const schema = Joi.object({
         searchString: Joi.string().allow('').optional()

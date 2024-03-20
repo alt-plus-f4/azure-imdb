@@ -1,4 +1,4 @@
-# azure-imdb
+# IMDB using Azure functions
 For Azure function app serverless using nodejs
 
 .gitignore
@@ -6,8 +6,60 @@ For Azure function app serverless using nodejs
 local.settings.json
 .env
 ```
-You need these files for it to work
-.env:
+You need .env and local.settings.json to work .env:
 ```env
 AzureSQLConnectionString=connectionstring
 ```
+.local.settings.json:
+```json
+
+```
+Example POST request for createMovie func:
+```json
+{
+    "title": "Test Title",
+    "year": 2022,
+    "genre": "Test Genre",
+    "description": "Test Description",
+    "director": "Test Director",
+    "actors": "Test Actor"
+}
+```
+Return
+```json
+{
+    "status": 200
+}
+```
+Example GET request for findMovie func\n(if you send blank req it returns all of the entries in the db):
+```json
+{
+    "title": "Test Title",
+}
+```
+Return
+```json
+{
+    "Title": "Test Title",
+    "Year": 2022,
+    "Genre": "Test Genre",
+    "Description": "Test Description",
+    "Director": "Test Director",
+    "Actors": "Test Actor"
+}
+```
+Example POST request for rateMovie func:
+```json
+{
+    "filmTitle": "The Matrix",
+    "opinion": "Great movie!",
+    "rating": 9,
+    "date": "2022-01-01",
+    "author": "John Doe"
+}
+```
+Return
+```json
+{
+    "status" : 200
+}
