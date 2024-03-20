@@ -63,3 +63,12 @@ Return
 {
     "status" : 200
 }
+
+# How to deploy
+Deploy the code into azure function
+Make a database and enter your information in the .env file
+Download the dependencies from the console tab in your azure function
+```cmd
+npm i mssql joi dotenv
+```
+You are ready to go!
