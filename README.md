@@ -10,10 +10,9 @@ You need .env and local.settings.json to work .env:
 ```env
 AzureSQLConnectionString=connectionstring
 ```
-.local.settings.json:
-```json
 
-```
+.local.settings.json: your settings file
+
 Example POST request for createMovie func:
 ```json
 {
@@ -63,6 +62,7 @@ Return
 {
     "status" : 200
 }
+```
 
 # How to deploy
 Deploy the code into azure function
