@@ -1,8 +1,5 @@
 const Joi = require('joi');
 const sql = require('mssql');
-require('dotenv').config();
-
-console.log('CreateMovie function is starting...');
 
 module.exports = async function (context, req) {
     const schema = Joi.object({
@@ -11,7 +8,7 @@ module.exports = async function (context, req) {
         genre: Joi.string().required(),
         description: Joi.string().required(),
         director: Joi.string().required(),
-        actors: Joi.string().required()
+        actors: Joi.string().required(),
     });
 
     const validationResult = schema.validate(req.body);
@@ -24,15 +21,10 @@ module.exports = async function (context, req) {
     }
 
     const filmInfo = req.body;
-
     try {
         await sql.connect(process.env.AzureSQLConnectionString);
-        console.log('Connected!');
-
-        const tableCheck = await sql.query`IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Films') CREATE TABLE Films (Title NVARCHAR(100), Year INT, Genre NVARCHAR(100), Description NVARCHAR(MAX), Director NVARCHAR(100), Actors NVARCHAR(MAX))`;
-        console.log('Table check complete.');
-
-        const result = await sql.query`INSERT INTO Films (Title, Year, Genre, Description, Director, Actors) VALUES (${filmInfo.title}, ${filmInfo.year}, ${filmInfo.genre}, ${filmInfo.description}, ${filmInfo.director}, ${filmInfo.actors})`;
+        await sql.query`IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Films') CREATE TABLE Films (Title NVARCHAR(100), Year INT, Genre NVARCHAR(100), Description NVARCHAR(MAX), Director NVARCHAR(100), Actors NVARCHAR(MAX), AverageRating FLOAT)`;
+        await sql.query`INSERT INTO Films (Title, Year, Genre, Description, Director, Actors, AverageRating) VALUES (${filmInfo.title}, ${filmInfo.year}, ${filmInfo.genre}, ${filmInfo.description}, ${filmInfo.director}, ${filmInfo.actors}, 0.0)`;
         sql.close();
         context.res = {
             status: 200,

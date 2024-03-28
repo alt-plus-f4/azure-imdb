@@ -1,15 +1,14 @@
 const Joi = require('joi');
 const sql = require('mssql');
 
-console.log('RateMovie function is starting...');
-
 module.exports = async function (context, req) {
     const schema = Joi.object({
         filmTitle: Joi.string().required(),
         opinion: Joi.string().required(),
         rating: Joi.number().integer().min(1).max(10).required(),
         date: Joi.date().iso().required(),
-        author: Joi.string().required()
+        author: Joi.string().required(),
+        code: Joi.string().optional()
     });
 
     const validationResult = schema.validate(req.body);

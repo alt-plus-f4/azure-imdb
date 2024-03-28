@@ -1,11 +1,10 @@
 const Joi = require('joi');
 const sql = require('mssql');
 
-console.log('FindMovie function is starting...');
-
 module.exports = async function (context, req) {
     const schema = Joi.object({
-        searchString: Joi.string().allow('').optional()
+        title: Joi.string().allow('').optional(),
+        code: Joi.string().optional()
     });
 
     const validationResult = schema.validate(req.query);
@@ -17,7 +16,7 @@ module.exports = async function (context, req) {
         return;
     }
 
-    const searchString = req.query.searchString;
+    const searchString = req.body.title;
 
     try {
         await sql.connect(process.env.AzureSQLConnectionString);

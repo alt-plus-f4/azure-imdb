@@ -1,18 +1,10 @@
 # IMDB using Azure functions
-For Azure function app serverless using nodejs
+For Azure function app serverless using 
 
-.gitignore
-```git
-local.settings.json
-.env
-```
-You need .env and local.settings.json to work .env:
+You need .env and to work .env:
 ```env
-AzureSQLConnectionString=connectionstring
+AzureSQLConnectionString=connectionString
 ```
-
-.local.settings.json: your settings file
-
 Example POST request for createMovie func:
 ```json
 {
@@ -30,7 +22,7 @@ Return
     "status": 200
 }
 ```
-Example GET request for findMovie func\n(if you send blank req it returns all of the entries in the db):
+Example GET request for findMovie func (if you send blank req it returns all of the entries in the db):
 ```json
 {
     "title": "Test Title",
@@ -66,7 +58,7 @@ Return
 
 # How to deploy
 Deploy the code into azure function
-Make a database and enter your information in the .env file
+Make a database and enter your connection string in the .env file
 Download the dependencies from the console tab in your azure function
 ```cmd
 npm i mssql joi dotenv
