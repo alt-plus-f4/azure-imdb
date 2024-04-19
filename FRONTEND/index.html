@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Film Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Upload Film Information</h1>
+	<div class="createMovie"> 
+		<form id="uploadForm" class="uploadForm">
+			<label for="title">Title:</label>
+			<input type="text" id="title" name="title" required><br>
+			<label for="year">Year:</label>
+			<input type="number" id="year" name="year" min="1900" max="2099" required><br>
+			<label for="genre">Genre:</label>
+			<input type="text" id="genre" name="genre" required><br>
+			<label for="description">Description:</label>
+			<textarea id="description" name="description" required></textarea><br>
+			<label for="director">Director:</label>
+			<input type="text" id="director" name="director" required><br>
+			<label for="actors">Actors:</label>
+			<input type="text" id="actors" name="actors" required><br>
+			<label for="image">Image:</label>
+			<input type="file" id="image" name="image" accept="image/*" required><br>
+			<button type="submit">Upload</button>
+		</form>
+
+		<div class="getImage">
+			<h2>Retrieve Thumbnail Image by Title</h2>
+			<label for="titleSearch">Enter Title:</label>
+			<input type="text" id="titleSearch" name="titleSearch" required>
+			<button onclick="getThumbnail()">Get Thumbnail</button>
+			<div id="thumbnailContainer"></div>
+		</div>
+
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

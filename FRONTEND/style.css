@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+	background: #f6ffc9;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+	text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+	padding: 10px 20px;
+	cursor: pointer;
+	background: #f6ffc9;
+	border-radius: 8px;
+	border: none;
+}
+
+#thumbnailContainer {
+    margin-top: 20px;
+}
+#thumbnailContainer img{
+	max-width: 50%;
+}
+
+.uploadForm, .getImage{
+	display: flex;
+	width: 80%;
+	text-align: center;
+	justify-content: center;
+	background: #0000008f;
+	color: white;
+	border-radius: 30px;
+	margin: auto;
+	margin-top: 50px;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	
+}
+
+.getImage, .uploadForm input{
+	width: 50%;
+	text-align: center;
+	margin: 15px auto;
+}
+
+.createMovie{
+	width: full;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	align-content: center;
+}
